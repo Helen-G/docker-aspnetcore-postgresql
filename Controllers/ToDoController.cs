@@ -2,6 +2,8 @@ using dockerapi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
 using System.Linq;
+using System;
+
 namespace dockerapi.Controllers
 {
     [Route("api/[controller]")]
@@ -39,18 +41,18 @@ namespace dockerapi.Controllers
         }
 
         /// <summary>
-        /// This method shows all todos by title
+        /// This method shows a todo item by id
         /// </summary>
-        /// <param name="title"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         ///<remarks>
         /// Sample request
-        /// GET/Todo/title1
+        /// GET/Todo/id
         /// </remarks>
-        [HttpGet("{title}")]
-        public object GetByTitle(string title)
+        [HttpGet("{id}")]
+        public object GetById(int id)
         {
-            return _context.Todos.Where(b => b.Title == title).Select((c) => new
+            return _context.Todos.Where(b => b.Id == id).Select((c) => new
             {
                 Id = c.Id,
                 Title = c.Title,
@@ -58,6 +60,19 @@ namespace dockerapi.Controllers
                 EndDate = c.EndDate,
                 Priority = c.Priority
             }).ToList();
+        }
+
+        /// <summary>
+        /// This method adds a new todo item
+        /// </summary>
+        /// Sample request
+        /// POST/todo/
+        /// </remarks>
+        [HttpPost]
+        public void Post([FromBody]Todo item)
+        {
+            _context.Add(item);
+            _context.SaveChanges();            
         }
 
     }
