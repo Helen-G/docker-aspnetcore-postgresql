@@ -7,11 +7,11 @@ namespace dockerapi.Controllers
     [Route("api/[controller]")]
     [ApiController]
 #pragma warning disable CS1591
-    public class ToDoController : ControllerBase
+    public class TodoController : ControllerBase
     {
         private readonly ApiDbContext _context;
 
-        public ToDoController(ApiDbContext context)
+        public TodoController(ApiDbContext context)
         {
             _context = context;
         }
@@ -23,12 +23,12 @@ namespace dockerapi.Controllers
         /// <returns></returns>
         ///<remarks>
         /// Sample request
-        /// GET/ToDo
+        /// GET/Todo
         /// </remarks> 
         [HttpGet]
         public object Get()
         {
-            return _context.ToDos.Where(b => b.Title.Contains("Title")).Select((c) => new
+            return _context.Todos.Select(c => new
             {
                 Id = c.Id,
                 Title = c.Title,
@@ -45,12 +45,12 @@ namespace dockerapi.Controllers
         /// <returns></returns>
         ///<remarks>
         /// Sample request
-        /// GET/ToDo/title1
+        /// GET/Todo/title1
         /// </remarks>
         [HttpGet("{title}")]
         public object GetByTitle(string title)
         {
-            return _context.ToDos.Where(b => b.Title == title).Select((c) => new
+            return _context.Todos.Where(b => b.Title == title).Select((c) => new
             {
                 Id = c.Id,
                 Title = c.Title,

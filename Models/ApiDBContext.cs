@@ -12,12 +12,12 @@ namespace dockerapi.Models{
         {
 
         }
-        public DbSet<ToDo> ToDos { get; set; }
+        public DbSet<Todo> Todos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            new ToDoMap(modelBuilder.Entity<ToDo>());
+            new TodoMap(modelBuilder.Entity<Todo>());
         }
     }
     #pragma warning restore CS1591
