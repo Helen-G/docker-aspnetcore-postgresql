@@ -19,7 +19,7 @@ After updating code use the following commands to force recreation of the contai
 > docker-compose up --force-recreate --build
 ```
 
-## Steps to run
+## Steps to run an application
 1.  clone repository
 
 2. `cd docker-aspnetcore-postgresql`
@@ -34,6 +34,7 @@ After updating code use the following commands to force recreation of the contai
 
 7. `curl http://localhost:8000/api/todo`  (GET request to display the list of todo items available in the db)
 
-8. `curl -X POST  -H "Content-Type: application/json" http://localhost:8000/api/todo -d "{\"title\":\"Do some coding !!!\", \"StartDate\":\"2019-04-20\", \"EndDate\":\"2019-04-20\", \"Priority\":\"High\"}"` (POST request to save a new todo item in the db)
+8. `curl -X POST  -H "Content-Type: application/json" http://localhost:8000/api/todo -d "{\"title\":\"Do some coding !!!\", \"StartDate\":\"2019-04-20\", \"EndDate\":\"2019-04-20\", \"Priority\":\"High\"}"` 
+  (POST request to save a new todo item in the db)
 
 9. `curl http://localhost:8000/api/todo/1` (GET request to display the details of a todo item with id=1)
