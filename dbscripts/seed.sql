@@ -12,6 +12,6 @@ CREATE TABLE todo
 
 ALTER TABLE "todo" OWNER TO myuser;
 
-Insert into todo(title,start_date,end_date,priority) values( 'Title 1','2019-07-1','2019-07-10','priority1');
-Insert into todo(title,start_date,end_date,priority) values( 'Title 2', '2019-07-10', '2019-07-12','priority1');
+Insert into todo(title,start_date,end_date,priority) values( 'toDo item 1','2019-07-1','2019-07-10','high');
+Insert into todo(title,start_date,end_date,priority) values( 'toDo item 2', '2019-07-10', '2019-07-12','medium');
 
