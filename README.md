@@ -7,18 +7,6 @@ Added Swagger support to interact with API’s resources.
 1. [Docker](https://www.docker.com/)
 2. [.NET Core SDK 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 
-## Steps
-1.  clone repository
-
-2. `cd docker-aspnetcore-postgresql`
-
-3. `docker-compose build`
-
-4. `docker-compose up`
-
-5.  Navigate to http://localhost:8000/swagger
-
-
 ## During development
 After updating schema use the following commands to force recreation of the postgresql volume:
 ```shell
@@ -30,3 +18,22 @@ After updating code use the following commands to force recreation of the contai
 ```shell
 > docker-compose up --force-recreate --build
 ```
+
+## Steps to run
+1.  clone repository
+
+2. `cd docker-aspnetcore-postgresql`
+
+3. `docker-compose build`
+
+4. `docker-compose up`
+
+5.  Navigate to http://localhost:8000/swagger (you should see the API methods in a user-friendly UI)
+
+6. `docker run --rm --name curl pstauffer/curl:latest` 
+
+7. `curl http://localhost:8000/api/todo`  (GET request to display the list of todo items available in the db)
+
+8. `curl -X POST  -H "Content-Type: application/json" http://localhost:8000/api/todo -d "{\"title\":\"Do some coding !!!\", \"StartDate\":\"2019-04-20\", \"EndDate\":\"2019-04-20\", \"Priority\":\"High\"}"` (POST request to save a new todo item in the db)
+
+9. `curl http://localhost:8000/api/todo/1` (GET request to display the details of a todo item with id=1)
