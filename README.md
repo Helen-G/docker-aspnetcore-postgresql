@@ -30,11 +30,9 @@ After updating code use the following commands to force recreation of the contai
 
 5.  Navigate to http://localhost:8000/swagger (you should see the API methods in a user-friendly UI)
 
-6. `docker run --rm --name curl pstauffer/curl:latest` 
+6. `docker run --network host --rm --name curl pstauffer/curl:latest curl http://localhost:8000/api/todo` (GET request to display the list of todo items available in the db)
 
-7. `curl http://localhost:8000/api/todo`  (GET request to display the list of todo items available in the db)
-
-8. `curl -X POST  -H "Content-Type: application/json" http://localhost:8000/api/todo -d "{\"title\":\"Do some coding !!!\", \"StartDate\":\"2019-04-20\", \"EndDate\":\"2019-04-20\", \"Priority\":\"High\"}"` 
+7. `docker run --network host --rm --name curl pstauffer/curl:latest curl -X POST  -H "Content-Type: application/json" http://localhost:8000/api/todo -d "{\"title\":\"Do some coding !!!\", \"StartDate\":\"2019-04-20\", \"EndDate\":\"2019-04-20\", \"Priority\":\"High\"}"` 
   (POST request to save a new todo item in the db)
 
-9. `curl http://localhost:8000/api/todo/1` (GET request to display the details of a todo item with id=1)
+9. `docker run --network host --rm --name curl pstauffer/curl:latest curl http://localhost:8000/api/todo/1` (GET request to display the details of a todo item with id=1)
